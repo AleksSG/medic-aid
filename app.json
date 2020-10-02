@@ -1,9 +1,9 @@
 {
-  "name": "pills-reminder",
-  "displayName": "pills-reminder",
+  "name": "medic-aid",
+  "displayName": "medic-aid",
   "expo": {
-    "name": "pills-reminder",
-    "slug": "pills-reminder",
+    "name": "medic-aid",
+    "slug": "medic-aid",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
