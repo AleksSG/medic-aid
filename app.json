@@ -1,0 +1,12 @@
+{
+  "name": "pills-reminder",
+  "displayName": "pills-reminder",
+  "expo": {
+    "name": "pills-reminder",
+    "slug": "pills-reminder",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
