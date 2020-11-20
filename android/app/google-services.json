@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "182083179780",
+    "firebase_url": "https://medic-aidion.firebaseio.com",
+    "project_id": "medic-aidion",
+    "storage_bucket": "medic-aidion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182083179780:android:62350c83709a23401f6c51",
+        "android_client_info": {
+          "package_name": "com.pillsreminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182083179780-uhttd9d4ttipbru574r8bbnr0g5rpnn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_vnMDjKNmGJZ0bv-kUWRLn8zU_l9CmTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182083179780-uhttd9d4ttipbru574r8bbnr0g5rpnn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

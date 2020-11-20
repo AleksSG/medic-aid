@@ -6,6 +6,7 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "@react-navigation/native": "^5.8.9",
     "android": "^0.0.8",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
