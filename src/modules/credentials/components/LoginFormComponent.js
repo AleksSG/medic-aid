@@ -19,7 +19,7 @@ const LoginFormComponent = ({
             }}
             onSubmit={(values, actions) => {
                     onPressSubmit(values);
-                    actions.setSubmitting(false);
+                    //actions.setSubmitting(false);
                 }}
             validationSchema={LoginSchema}>
 
