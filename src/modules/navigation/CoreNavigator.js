@@ -25,12 +25,15 @@ const CoreNavigator = () => {
     console.log(user);
     return (
         <>
-            { user
+        <NavigationContainer>
+                    <MainStackNavigator />
+                </NavigationContainer>
+            {/* { user
                 ? <NavigationContainer>
                     <MainStackNavigator />
                 </NavigationContainer>
                 : <LoginContainer setUser={setUser}/>
-            }
+            } */}
         </>
     );
 };

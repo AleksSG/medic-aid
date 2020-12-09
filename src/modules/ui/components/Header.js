@@ -4,6 +4,7 @@ import Text from './Text';
 
 const Header = ({
     backButton,
+    headerImage,
     title,
 }) => {
     return (
@@ -14,6 +15,7 @@ const Header = ({
                 </TouchableOpacity>
                 : null
             }
+            {headerImage}
             <Text style={styles.titleStyle}>{title}</Text>
         </View>
     );
