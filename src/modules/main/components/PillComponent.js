@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import Text from '../../ui/components/Text';
 
 const PillComponent = (props) => {
     return (
         <View style={[{ backgroundColor: props.color }, styles.containerStyle]}>
-            <Text style={styles.textStyle}>Pill 1</Text>
+            <Text style={styles.textStyle}>{props.pill.name}</Text>
             <Text style={styles.nextArrowStyle}>{"➤"}</Text>
         </View>
     );
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         borderRadius: 20,
         paddingHorizontal: 16,
+        marginVertical: 16,
     },
     textStyle: {
         fontWeight: "bold",
