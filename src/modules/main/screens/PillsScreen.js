@@ -9,7 +9,6 @@ const PillsScreen = ({ navigation }) => {
             <Header
                 title='My Pills'
                 backButton={() => navigation.goBack()}>
-
             </Header>
         </View>
     );

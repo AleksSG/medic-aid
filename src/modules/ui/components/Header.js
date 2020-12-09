@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Text from './Text';
-import Button from './Button';
 
 const Header = ({
     backButton,
@@ -13,7 +12,6 @@ const Header = ({
                 ? <TouchableOpacity onPress={backButton}>
                     <Text style={styles.backTextStyle}>{'< Back'}</Text>
                 </TouchableOpacity>
-                //<Button style={styles.backButtonStyle} title='< Back' onPress={backButton}></Button>
                 : null
             }
             <Text style={styles.titleStyle}>{title}</Text>
@@ -39,7 +37,7 @@ const styles = StyleSheet.create({
     },
     titleStyle: {
         color: 'purple',
-        fontSize: 64,
+        fontSize: 56,
         fontWeight: 'bold',
 
     }
