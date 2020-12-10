@@ -13,7 +13,7 @@ const PillsScreen = ({ navigation }) => {
                 headerImage={<Image source={require("../../../assets/images/pills.png")} style={styles.imageStyle} />}
             >
             </Header>
-            <PillsContainer />
+            <PillsContainer navigation={navigation}/>
         </View>
     );
 }

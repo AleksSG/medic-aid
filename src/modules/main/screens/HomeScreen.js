@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
                     buttonContainerStyle={styles.buttonContainerStyle}
                     buttonStyle={styles.buttonsStyle}
                     textStyle={styles.buttonTextStyle}
-                    onPress={() => navigation.navigate('Pills')}
+                    onPress={() => {navigation.navigate('Pills')}}
                 />
                 <ImageButton
                     title="My Doctor"
@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
                     buttonContainerStyle={styles.buttonContainerStyle}
                     buttonStyle={styles.buttonsStyle}
                     textStyle={styles.buttonTextStyle}
-                    onPress={() => navigation.navigate('Doctor')}
+                    onPress={() => {navigation.navigate('Doctor')}}
                 />
                 <ImageButton
                     title="My Wristlet"
@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
                     buttonContainerStyle={styles.buttonContainerStyle}
                     buttonStyle={styles.buttonsStyle}
                     textStyle={styles.buttonTextStyle}
-                    onPress={() => navigation.navigate('Wristlet')}
+                    onPress={() => {navigation.navigate('Wristlet')}}
                 />
             </View>
         </View>
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     },
     buttonTextStyle: {
         fontSize: 24,
+        padding: 8,
         fontWeight: 'bold',
         color: 'white',
         alignSelf: 'center',

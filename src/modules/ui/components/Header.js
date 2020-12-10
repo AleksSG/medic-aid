@@ -6,12 +6,13 @@ const Header = ({
     backButton,
     headerImage,
     title,
+    containerStyle,
 }) => {
     return (
-        <View style={styles.containerStyle}>
+        <View style={[styles.containerStyle, containerStyle]}>
             {backButton
                 ? <TouchableOpacity onPress={backButton}>
-                    <Text style={styles.backTextStyle}>{'< Back'}</Text>
+                    <Text style={styles.backTextStyle}>{'⇐'}</Text>
                 </TouchableOpacity>
                 : null
             }
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     backTextStyle: {
-        fontSize: 24,
+        fontSize: 48,
     },
     titleStyle: {
         color: 'purple',

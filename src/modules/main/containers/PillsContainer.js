@@ -1,17 +1,17 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import PillComponent from '../components/PillComponent';
 
 import { API_URL, COLORS } from '../../../utils/global';
 
-const PillsContainer = () => {
+const PillsContainer = ({navigation}) => {
 
     const [pills, setPills] = useState([]);
 
     useEffect(
         () => {
             // try {
-            //     const response = await fetch(`${API_URL}pills/${UID}`);
+            //     const response = await fetch(`${API_URL}prescription/{UID}`);
             //     const json = await response.json();
             //     console.log(json);
             // } catch (error) {
@@ -22,6 +22,9 @@ const PillsContainer = () => {
             setPills([
                 {
                     name: "First Pill",
+                    pill: {
+        
+                    },
                     remain: 11,
                     frequency: "3 times per day",
                     time: ["9:00", "12:00", "19:00"],
@@ -73,7 +76,14 @@ const PillsContainer = () => {
 
     return (
         <ScrollView style={styles.containerStyle}>
-            {pills.map((pill, index) => <PillComponent key={index} pill={pill} color={`#${COLORS[index%COLORS.length]}`} />,)}
+            { pills.map((pill, index) => {
+                const color = `#${COLORS[index % COLORS.length]}`;
+                return (
+                    <TouchableOpacity onPress={() => navigation.navigate('PillDetails', {...pill, color})}>
+                        <PillComponent key={index} pill={pill} color={color} />
+                    </TouchableOpacity>
+                );
+            })}
         </ScrollView>
     );
 };

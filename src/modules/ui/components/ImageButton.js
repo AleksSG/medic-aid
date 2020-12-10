@@ -1,14 +1,17 @@
 
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
+import {TouchableOpacity} from 'react-native'
 import Button from './Button';
+import Text from './Text';
 
 const ImageButton = (props) => {
     return (
-        <View style={[styles.containerStyle, props.buttonContainerStyle]}>
+        <TouchableOpacity style={[styles.containerStyle, props.buttonContainerStyle]} onPress={props.onPress}>
             <Image style={styles.imageStyle} source={props.imageUri}></Image>
-            <Button {...props} />
-        </View>
+            <Text style={[props.textStyle, styles.textStyle]}>{props.title}</Text>
+            {/* <Button title={props.title} buttonStyle={props.buttonStyle} textStyle={props.textStyle} onPress={props.onPress}/> */}
+        </TouchableOpacity>
 
     );
 };
