@@ -29,6 +29,8 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
+
+
 @interface AppDelegate () <RCTBridgeDelegate>
 
 @property (nonatomic, strong) UMModuleRegistryAdapter *moduleRegistryAdapter;
