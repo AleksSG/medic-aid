@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import Text from '../../ui/components/Text';
 import Header from '../../ui/components/Header';
+import DoctorsContainer from '../containers/DoctorsContainer';
 
 const DoctorScreen = ({ navigation }) => {
     return (
@@ -11,8 +12,8 @@ const DoctorScreen = ({ navigation }) => {
                 backButton={() => navigation.goBack()}
                 headerImage={<Image source={require("../../../assets/images/doctor.png")} style={styles.imageStyle} />}
             >
-
             </Header>
+            <DoctorsContainer />
         </View>
     );
 }
