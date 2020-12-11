@@ -11,9 +11,10 @@ const PillsContainer = ({navigation}) => {
     const [pills, setPills] = useState([]);
 
     useEffect(
-        () => {
+        async () => {
             // try {
-            //     const response = await fetch(`${API_URL}prescription/${auth().currentUser.uid}`);
+            //     //${auth().currentUser.uid}
+            //     const response = await fetch(`${API_URL}get_prescription/TESTINGUID123456789`);
             //     const json = await response.json();
             //     console.log(json);
             // } catch (error) {
@@ -23,19 +24,21 @@ const PillsContainer = ({navigation}) => {
 
             setPills([
                 {
-                    name: "First Pill",
+                    name: "Paracetamol",
                     pill: {
         
                     },
                     remain: 11,
                     frequency: "3 times per day",
                     time: ["9:00", "12:00", "19:00"],
+                    video: "vQMujAI69Hg",
                 },
                 {
-                    name: "Night Pill",
+                    name: "Ibuprofen",
                     remain: -1,
                     frequency: "1 time per day",
                     time: ["4:00"],
+                    video: "QhGxwX9yvRA",
                 },
                 {
                     name: "Daily Pill",
