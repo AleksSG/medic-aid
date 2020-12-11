@@ -4,6 +4,8 @@ import PillComponent from '../components/PillComponent';
 
 import { API_URL, COLORS } from '../../../utils/global';
 
+import auth from '@react-native-firebase/auth';
+
 const PillsContainer = ({navigation}) => {
 
     const [pills, setPills] = useState([]);
@@ -11,7 +13,7 @@ const PillsContainer = ({navigation}) => {
     useEffect(
         () => {
             // try {
-            //     const response = await fetch(`${API_URL}prescription/{UID}`);
+            //     const response = await fetch(`${API_URL}prescription/${auth().currentUser.uid}`);
             //     const json = await response.json();
             //     console.log(json);
             // } catch (error) {

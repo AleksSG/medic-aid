@@ -8,32 +8,33 @@ import LoginContainer from '../credentials/containers/LoginContainer';
 
 
 const CoreNavigator = () => {
-    //const [initializing, setInitializing] = useState(true);
+    const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
 
-    const onAuthStateChanged = (usr) => {
-        setUser(usr);
-        //if (initializing) setInitializing(false);
-    };
+    // Handle user state changes
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
 
-    // useEffect(() => {
-    //     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    //     return subscriber; // unsubscribe on unmount
-    // }, []);
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+      }, []);
 
-    //if (initializing) return null;
-    console.log(user);
+    if (initializing) return null;
+
     return (
         <>
-        <NavigationContainer>
-                    <MainStackNavigator />
-                </NavigationContainer>
-            {/* { user
+            {/* <NavigationContainer>
+                <MainStackNavigator />
+            </NavigationContainer> */}
+            { user
                 ? <NavigationContainer>
                     <MainStackNavigator />
                 </NavigationContainer>
-                : <LoginContainer setUser={setUser}/>
-            } */}
+                : <LoginContainer />
+            }
         </>
     );
 };

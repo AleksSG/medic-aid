@@ -2,8 +2,14 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Header from '../../ui/components/Header';
 import ImageButton from '../../ui/components/ImageButton';
+import Button from '../../ui/components/Button';
+
+import auth from '@react-native-firebase/auth';
 
 const HomeScreen = ({ navigation }) => {
+
+    const logoutButton = async () => { await auth().signOut(); }
+
     return (
         <View style={styles.containerStyle}>
             <Header title='MedicAid'></Header>
@@ -14,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
                     buttonContainerStyle={styles.buttonContainerStyle}
                     buttonStyle={styles.buttonsStyle}
                     textStyle={styles.buttonTextStyle}
-                    onPress={() => {navigation.navigate('Pills')}}
+                    onPress={() => { navigation.navigate('Pills') }}
                 />
                 <ImageButton
                     title="My Doctor"
@@ -22,7 +28,7 @@ const HomeScreen = ({ navigation }) => {
                     buttonContainerStyle={styles.buttonContainerStyle}
                     buttonStyle={styles.buttonsStyle}
                     textStyle={styles.buttonTextStyle}
-                    onPress={() => {navigation.navigate('Doctor')}}
+                    onPress={() => { navigation.navigate('Doctor') }}
                 />
                 <ImageButton
                     title="My Wristlet"
@@ -30,8 +36,14 @@ const HomeScreen = ({ navigation }) => {
                     buttonContainerStyle={styles.buttonContainerStyle}
                     buttonStyle={styles.buttonsStyle}
                     textStyle={styles.buttonTextStyle}
-                    onPress={() => {navigation.navigate('Wristlet')}}
+                    onPress={() => { navigation.navigate('Wristlet') }}
                 />
+                <Button
+                    title={"Log Out"}
+                    onPress={logoutButton}
+                    textStyle={{fontSize: 24}}
+                />
+
             </View>
         </View>
     );

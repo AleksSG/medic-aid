@@ -13,40 +13,33 @@ const LoginContainer = ({
 
     const onPressLogIn = useCallback(
         async (values) => {
-            setUser(JSON.stringify(values));
-            // try {
-            //     const response = await fetch(`${API_URL}patient`);
-            //     const json = await response.json();
-            //     console.log(json);
-            // } catch (error) {
-            //     console.log(error);
-            // }
-
             try {
-                const response = await fetch(`${API_URL}checkpatient`, {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(values),
-                });
-                const json = await response.json();
-                console.log(json);
-
-                //     // const user = await auth().createUserWithEmailAndPassword(values.email, values.password);
-                //     //Connect to server
-                //     //Wait for answer
-                //     //Connect to FB
-                //     //Wait for answer
-                //     //Send UID to server
+                // const response = await fetch(`${API_URL}checkpatient`, {
+                //     method: 'POST',
+                //     headers: {
+                //         Accept: 'application/json',
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(values),
+                // });
+                // console.log(response);
+                const fb_answer = await auth().createUserWithEmailAndPassword(values.email, values.password);
+                console.log(fb_answer);
+                console.log(fb_answer.user.uid);
+                    // Connect to server
+                    // Wait for answer
+                    // Connect to FB
+                    // Wait for answer
+                    // Send UID to server
             } catch (error) {
-                console.log(error);
                 if (error.code === 'auth/user-not-found') {
 
                 }
                 if (error.code === 'auth/wrong-password') {
 
+                }
+                if (error.code === 'auth/email-already-in-use') {
+                    await auth().signInWithEmailAndPassword(values.email, values.password)
                 }
             }
         }, []);
