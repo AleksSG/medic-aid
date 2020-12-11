@@ -14,7 +14,7 @@ const LoginContainer = ({
     const onPressLogIn = useCallback(
         async (values) => {
             try {
-                // const response = await fetch(`${API_URL}checkpatient`, {
+                // const firstRegister = await fetch(`${API_URL}checkpatient`, {
                 //     method: 'POST',
                 //     headers: {
                 //         Accept: 'application/json',
@@ -22,15 +22,25 @@ const LoginContainer = ({
                 //     },
                 //     body: JSON.stringify(values),
                 // });
-                // console.log(response);
+                // if (firstRegister.status !== 200) throw "Could not check if the user exists"
+
                 const fb_answer = await auth().createUserWithEmailAndPassword(values.email, values.password);
-                console.log(fb_answer);
-                console.log(fb_answer.user.uid);
-                    // Connect to server
-                    // Wait for answer
-                    // Connect to FB
-                    // Wait for answer
-                    // Send UID to server
+
+                // const sendUID = await fetch(`${API_URL}updatepatient`, {
+                //     method: 'PATCH',
+                //     headers: {
+                //         Accept: 'application/json',
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify({
+                //         email: values.email,
+                //         UID: "TESTINGUID123456789",
+                //     }),
+                // });
+                if (sendUID.status !== 200) throw "Error in assigning the UID"
+                //console.log(sendUID);
+
+                setUser(values.email)
             } catch (error) {
                 if (error.code === 'auth/user-not-found') {
 
@@ -41,6 +51,7 @@ const LoginContainer = ({
                 if (error.code === 'auth/email-already-in-use') {
                     await auth().signInWithEmailAndPassword(values.email, values.password)
                 }
+                console.log(error);
             }
         }, []);
 

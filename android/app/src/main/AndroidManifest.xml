@@ -35,7 +35,7 @@
     <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="YOUR-APP-SDK-VERSION-HERE"/>
     
     
-    <meta-data android:name="com.dieam.reactnativepushnotification.notification_foreground"
+    <!-- <meta-data android:name="com.dieam.reactnativepushnotification.notification_foreground"
                     android:value="false"/>
     <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color"
                     android:resource="@color/white"/>
@@ -54,7 +54,7 @@
         <intent-filter>
             <action android:name="com.google.firebase.MESSAGING_EVENT" />
         </intent-filter>
-    </service>
+    </service> -->
     
     
     <activity
