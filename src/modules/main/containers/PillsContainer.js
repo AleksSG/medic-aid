@@ -2,13 +2,14 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity, Button } from 'react-native';
 import PillComponent from '../components/PillComponent';
 
-
+import { LocalNotification, ScheduledNotification } from '../../services/LocalPushController';
 
 import { API_URL, COLORS } from '../../../utils/global';
 
 import auth from '@react-native-firebase/auth';
 
 import PushNotification from "react-native-push-notification";
+import { date } from 'yup';
 
 const PillsContainer = ({ navigation }) => {
 
@@ -34,7 +35,7 @@ const PillsContainer = ({ navigation }) => {
                     },
                     remain: 11,
                     frequency: "3 times per day",
-                    time: ["9:00", "12:00", "19:00"],
+                    time: ["9:00", "12:00", "23:05"],
                     video: "vQMujAI69Hg",
                 },
                 {
@@ -84,31 +85,35 @@ const PillsContainer = ({ navigation }) => {
         }, []);
 
 
-    const onPress = async () => {
-        PushNotification.localNotificationSchedule({
-            autoCancel: true,
-            bigText:
-                'This is local notification demo in React Native app. Only shown, when expanded.',
-            subText: 'Local Notification Demo',
-            title: 'Scheduled Notification Title',
-            message: 'Scheduled Notification Message',
-            vibrate: true,
-            vibration: 500,
-            playSound: true,
-            soundName: 'default',
-            actions: '["Yes", "No"]',
-            date: new Date(Date.now() + 10 * 1000) // in 3 secs
-        });
-        PushNotification.popInitialNotification((notification) => {
-            console.log('Initial Notification', notification);
-        });
+    const onPress = () => {
+        ScheduledNotification("Aleks", pills[0].name, new Date(Date.now() + 5000));
+        ScheduledNotification("Aleks", pills[0].name, new Date(Date.now() + 2000));
+        ScheduledNotification("Aleks", pills[1].name, new Date(Date.now() + 3000));
+        ScheduledNotification("Aleks", pills[2].name, new Date(Date.now() + 7000));
+        ScheduledNotification("Aleks", pills[2].name, new Date(Date.now() + 6000));
+        ScheduledNotification("Aleks", pills[3].name, new Date(Date.now() + 10000));
     };
+    const addNotification = (name, date) => {
+        ScheduledNotification("Aleks", name, date);
+    }
 
     return (
         <>
-            <Button onPress={onPress} title="Notification"></Button>
             <ScrollView style={styles.containerStyle}>
                 {pills.map((pill, index) => {
+                    pill.time.map(time => {
+                        const hour = time.split(':')[0];
+                        const minute = time.split(':')[1];
+                        const current = new Date();
+                        let notificationDate = new Date();
+                        notificationDate.setHours(hour);
+                        notificationDate.setMinutes(minute);
+                        if (current.getHours() > hour && current.getMinutes() > minute) { 
+                            notificationDate.setDate(current.getDate() + 1)
+                        }
+                        addNotification(pill.name, notificationDate);
+                        
+                    });
                     const color = `#${COLORS[index % COLORS.length]}`;
                     return (
                         <TouchableOpacity onPress={() => navigation.navigate('PillDetails', { ...pill, color })}>
@@ -117,6 +122,7 @@ const PillsContainer = ({ navigation }) => {
                     );
                 })}
             </ScrollView>
+            <Button onPress={onPress} title="Notification"></Button>
         </>
     );
 };
