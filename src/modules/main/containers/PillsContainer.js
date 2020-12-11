@@ -1,12 +1,16 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity, Button } from 'react-native';
 import PillComponent from '../components/PillComponent';
+
+
 
 import { API_URL, COLORS } from '../../../utils/global';
 
 import auth from '@react-native-firebase/auth';
 
-const PillsContainer = ({navigation}) => {
+import PushNotification from "react-native-push-notification";
+
+const PillsContainer = ({ navigation }) => {
 
     const [pills, setPills] = useState([]);
 
@@ -25,7 +29,7 @@ const PillsContainer = ({navigation}) => {
                 {
                     name: "First Pill",
                     pill: {
-        
+
                     },
                     remain: 11,
                     frequency: "3 times per day",
@@ -76,17 +80,41 @@ const PillsContainer = ({navigation}) => {
             ]);
         }, []);
 
+
+    const onPress = async () => {
+        PushNotification.localNotificationSchedule({
+            autoCancel: true,
+            bigText:
+                'This is local notification demo in React Native app. Only shown, when expanded.',
+            subText: 'Local Notification Demo',
+            title: 'Scheduled Notification Title',
+            message: 'Scheduled Notification Message',
+            vibrate: true,
+            vibration: 500,
+            playSound: true,
+            soundName: 'default',
+            actions: '["Yes", "No"]',
+            date: new Date(Date.now() + 10 * 1000) // in 3 secs
+        });
+        PushNotification.popInitialNotification((notification) => {
+            console.log('Initial Notification', notification);
+        });
+    };
+
     return (
-        <ScrollView style={styles.containerStyle}>
-            { pills.map((pill, index) => {
-                const color = `#${COLORS[index % COLORS.length]}`;
-                return (
-                    <TouchableOpacity onPress={() => navigation.navigate('PillDetails', {...pill, color})}>
-                        <PillComponent key={index} pill={pill} color={color} />
-                    </TouchableOpacity>
-                );
-            })}
-        </ScrollView>
+        <>
+            <Button onPress={onPress} title="Notification"></Button>
+            <ScrollView style={styles.containerStyle}>
+                {pills.map((pill, index) => {
+                    const color = `#${COLORS[index % COLORS.length]}`;
+                    return (
+                        <TouchableOpacity onPress={() => navigation.navigate('PillDetails', { ...pill, color })}>
+                            <PillComponent key={index} pill={pill} color={color} />
+                        </TouchableOpacity>
+                    );
+                })}
+            </ScrollView>
+        </>
     );
 };
 
