@@ -7,10 +7,10 @@ const DoctorComponent = (props) => {
         <View style={[{ backgroundColor: props.color }, styles.containerStyle]}>
             <Image source={require('../../../assets/images/medic_stuff.png')} style={styles.medicStuff}></Image>
             <View style={styles.textContainer}>
-                <Text style={[{ fontWeight: 'bold' }, styles.textStyle]}>{props.doctor.name}</Text>
+                <Text style={[{ fontWeight: 'bold' }, styles.textStyle]}>{props.doctor.firstName} {props.doctor.lastName}</Text>
                 <Text style={styles.textStyle}>{props.doctor.speciality}</Text>
                 <Text style={styles.textStyle}>{props.doctor.address}</Text>
-                <Text style={styles.textStyle}>{props.doctor.phoneNumber}</Text>
+                <Text style={styles.textStyle}>{props.doctor.phone}</Text>
                 <Text style={styles.textStyle}>{props.doctor.notes}</Text>
             </View>
             <Image source={require('../../../assets/images/phone.png')} style={styles.medicStuff}></Image>

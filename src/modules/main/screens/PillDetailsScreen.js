@@ -56,6 +56,22 @@ const PillDetailsScreen = ({ navigation, route }) => {
         }
     });
 
+    const showDays = () => {
+        if (!route.params.weekly) {return null;}
+        return (
+            <View style={styles.boxStyle}>
+                <Text style={styles.textStyle}>Days when take it</Text>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                    {route.params.days.map((day, index) =>
+                        <View key={index} style={[{ marginHorizontal: 8, paddingHorizontal: 26 }, styles.whiteBoxStyle]}>
+                            <Text style={styles.textStyle}>{day}</Text>
+                        </View>
+                    )}
+                </View>
+            </View>
+        );
+    }
+
     return (
         <ScrollView style={styles.scrollStyle}>
             <View style={styles.containerStyle}>
@@ -82,12 +98,25 @@ const PillDetailsScreen = ({ navigation, route }) => {
                         <Text style={styles.textStyle}>{route.params.frequency}</Text>
                     </View>
                 </View>
+                {showDays()}
                 <View style={styles.boxStyle}>
-                    <Text style={styles.textStyle}>Time</Text>
+                    <Text style={styles.textStyle}>Start Date</Text>
+                    <View style={[{ width: '100%' }, styles.whiteBoxStyle]}>
+                        <Text style={styles.textStyle}>{route.params.start}</Text>
+                    </View>
+                </View>
+                <View style={styles.boxStyle}>
+                    <Text style={styles.textStyle}>End Date</Text>
+                    <View style={[{ width: '100%' }, styles.whiteBoxStyle]}>
+                        <Text style={styles.textStyle}>{route.params.end}</Text>
+                    </View>
+                </View>
+                <View style={styles.boxStyle}>
+                    <Text style={styles.textStyle}>Times to take</Text>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                        {route.params.time.map((time, index) =>
+                        {route.params.hours.map((hours, index) =>
                             <View key={index} style={[{ marginHorizontal: 8, paddingHorizontal: 26 }, styles.whiteBoxStyle]}>
-                                <Text style={styles.textStyle}>{time}</Text>
+                                <Text style={styles.textStyle}>{hours}</Text>
                             </View>
                         )}
                     </View>

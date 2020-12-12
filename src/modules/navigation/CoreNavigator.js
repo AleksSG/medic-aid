@@ -26,15 +26,15 @@ const CoreNavigator = () => {
 
     return (
         <>
-            {/* <NavigationContainer>
+            <NavigationContainer>
                 <MainStackNavigator />
-            </NavigationContainer> */}
-            { user
+            </NavigationContainer>
+            {/* { user
                 ? <NavigationContainer>
                     <MainStackNavigator />
                 </NavigationContainer>
-                : <LoginContainer />
-            }
+                : <LoginContainer setUser={setUser}/>
+            } */}
         </>
     );
 };

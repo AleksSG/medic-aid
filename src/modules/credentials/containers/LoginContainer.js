@@ -14,31 +14,30 @@ const LoginContainer = ({
     const onPressLogIn = useCallback(
         async (values) => {
             try {
-                // const firstRegister = await fetch(`${API_URL}checkpatient`, {
-                //     method: 'POST',
-                //     headers: {
-                //         Accept: 'application/json',
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: JSON.stringify(values),
-                // });
-                // if (firstRegister.status !== 200) throw "Could not check if the user exists"
+                const firstRegister = await fetch(`${API_URL}checkpatient`, {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(values),
+                });
+                if (firstRegister.status !== 200) throw "Could not check if the user exists"
 
-                const fb_answer = await auth().createUserWithEmailAndPassword(values.email, values.password);
+                //const fb_answer = await auth().createUserWithEmailAndPassword(values.email, values.password);
 
-                // const sendUID = await fetch(`${API_URL}updatepatient`, {
-                //     method: 'PATCH',
-                //     headers: {
-                //         Accept: 'application/json',
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: JSON.stringify({
-                //         email: values.email,
-                //         UID: "TESTINGUID123456789",
-                //     }),
-                // });
+                const sendUID = await fetch(`${API_URL}updatepatient`, {
+                    method: 'PATCH',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: values.email,
+                        UID: "TESTINGUID123456789",
+                    }),
+                });
                 if (sendUID.status !== 200) throw "Error in assigning the UID"
-                //console.log(sendUID);
 
                 setUser(values.email)
             } catch (error) {

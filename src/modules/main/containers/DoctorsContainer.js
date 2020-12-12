@@ -11,47 +11,49 @@ const DoctorsContainer = () => {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(
-        () => {
-            // try {
-            //     const response = await fetch(`${API_URL}doctors/${auth().currentUser.uid}`);
-            //     const json = await response.json();
-            //     console.log(json);
-            // } catch (error) {
-            //    console.log(error);
-            //    setPills([]);
-            // }
+        async () => {
+            try {
+                //${auth().currentUser.uid}
+                const response = await fetch(`${API_URL}get_doctors/TESTINGUID123456789`);
+                const json = await response.json();
+                console.log(json);
+                setDoctors(json.array);
+            } catch (error) {
+                console.log(error);
+                setDoctors([]);
+            }
 
-            setDoctors([
-                {
-                    name: "Ruben Lopez",
-                    speciality: "COVID-19",
-                    address: "Hospital Baia, 19",
-                    phoneNumber: "61616161",
-                    notes: "",
-                },
-                {
-                    name: "Name Doctor 2",
-                    speciality: "Sight",
-                    address: "Clinic Bruh, 19",
-                    phoneNumber: "111111111",
-                    notes: "",
-                },
-                {
-                    name: "Bruh Doctor",
-                    speciality: "Corpse Analysis",
-                    address: "Home service",
-                    phoneNumber: "000000000",
-                    notes: "Works great with dead bodies",
-                },
-            ]);
+            // setDoctors([
+            //     {
+            //         name: "Ruben Lopez",
+            //         speciality: "COVID-19",
+            //         address: "Hospital Baia, 19",
+            //         phoneNumber: "61616161",
+            //         notes: "",
+            //     },
+            //     {
+            //         name: "Name Doctor 2",
+            //         speciality: "Sight",
+            //         address: "Clinic Bruh, 19",
+            //         phoneNumber: "111111111",
+            //         notes: "",
+            //     },
+            //     {
+            //         name: "Bruh Doctor",
+            //         speciality: "Corpse Analysis",
+            //         address: "Home service",
+            //         phoneNumber: "000000000",
+            //         notes: "Works great with dead bodies",
+            //     },
+            // ]);
         }, []);
-  
+
     return (
         <ScrollView style={styles.containerStyle}>
             { doctors.map((doctor, index) => {
                 const color = `#${COLORS[index % COLORS.length]}`;
                 return (
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => { }}>
                         <DoctorComponent key={index} doctor={doctor} color={color} />
                     </TouchableOpacity>
                 );
